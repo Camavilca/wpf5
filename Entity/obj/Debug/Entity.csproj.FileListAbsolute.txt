@@ -1,0 +1,6 @@
+C:\Users\Orlando Camavilca\source\repos\Semana04\Entity\bin\Debug\Entity.dll
+C:\Users\Orlando Camavilca\source\repos\Semana04\Entity\bin\Debug\Entity.pdb
+C:\Users\Orlando Camavilca\source\repos\Semana04\Entity\obj\Debug\Entity.csprojAssemblyReference.cache
+C:\Users\Orlando Camavilca\source\repos\Semana04\Entity\obj\Debug\Entity.csproj.CoreCompileInputs.cache
+C:\Users\Orlando Camavilca\source\repos\Semana04\Entity\obj\Debug\Entity.dll
+C:\Users\Orlando Camavilca\source\repos\Semana04\Entity\obj\Debug\Entity.pdb
