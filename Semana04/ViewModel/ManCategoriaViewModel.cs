@@ -1,4 +1,5 @@
-﻿using Semana04.Model;
+﻿using Entity;
+using Semana04.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -53,8 +54,23 @@ namespace Semana04.ViewModel
 		public ICommand CerrarCommand { set; get; }
 		public ICommand EliminarCommand { set; get; }
 
-		public ManCategoriaViewModel()
+		public ManCategoriaViewModel(Categoria categoria)
 		{
+			if (categoria != null)
+			{
+				ID = categoria.IdCategoria;
+				Nombre = categoria.NombreCategoria;
+				Descripcion = categoria.Descripcion;
+			}
+
+			EliminarCommand = new RelayCommand<Window>(o =>
+			{
+				if (ID > 0)
+				{
+					new CategoriaModel().Eliminar(ID);
+				}
+				//Cerrar(o);
+			});
 			GrabarCommand = new RelayCommand<object>(
 				o =>
 				{

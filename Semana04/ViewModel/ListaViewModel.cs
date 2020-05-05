@@ -1,4 +1,5 @@
 ﻿using Entity;
+using Semana04.View;
 using System;
 using System.Collections.ObjectModel;
 using System.Web.UI.MobileControls;
@@ -9,22 +10,54 @@ namespace Semana04.ViewModel
 {
     public class ListaViewModel : ViewModelBase
     {
-        public ObservableCollection<Categoria> Categorias { get; set; }
-        public ICommand NuevoCommand { set; get; }
-        public ICommand ConsultarCommand { set; get; }
-
-
-        private ICommand _detalleCategoria;
-        public ICommand DetalleCategoria =>
-         _detalleCategoria ?? (_detalleCategoria = new RelayCommand<Window>(x => {
-            var response = x;
-        }));
-
-        public void MyFuncion()
+        private readonly static ListaViewModel _instance = new ListaViewModel();
+        public static ListaViewModel Instance
         {
-
+            get
+            {
+                return _instance;
+            }
         }
 
+        public Categoria _SelectedCategoria;
+        public Categoria SelectedCategoria
+        {
+            get { return _SelectedCategoria; }
+            set
+            {
+                if (_SelectedCategoria != value)
+                {
+                    _SelectedCategoria = value;
+
+
+                    if (_SelectedCategoria != null)
+                    {
+                        ManCategoria window = new ManCategoria(_SelectedCategoria);
+                        window.ShowDialog();
+                    }
+
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+
+        //public ObservableCollection<Categoria> Categorias { get; set; }
+        public ObservableCollection<Categoria> _Categorias;
+        public ObservableCollection<Categoria> Categorias
+        {
+            get { return _Categorias; }
+            set
+            {
+                if (Categorias != value)
+                {
+                    _Categorias = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+        public ICommand NuevoCommand { set; get; }
+        public ICommand ConsultarCommand { set; get; }
 
         public ListaViewModel()
         {
@@ -34,12 +67,9 @@ namespace Semana04.ViewModel
             ConsultarCommand = new RelayCommand<object>(
                 o => { Categorias = (new Model.CategoriaModel()).Categorias; }
             );
-            //DetalleCategoria = new RelayCommand<Window>(
-            //    o => { System.Console.WriteLine(o); }
-            //);
             void Abrir()
             {
-                View.ManCategoria window = new View.ManCategoria();
+                View.ManCategoria window = new View.ManCategoria(new Categoria());
                 window.ShowDialog();
             }
 

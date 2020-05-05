@@ -1,4 +1,5 @@
-﻿using Semana04.ViewModel;
+﻿using Entity;
+using Semana04.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,10 +19,10 @@ namespace Semana04.View
     public partial class ManCategoria : Window
     {
         ManCategoriaViewModel viewModel;
-        public ManCategoria()
+        public ManCategoria(Categoria categoria)
         {
             InitializeComponent();
-            viewModel = new ManCategoriaViewModel();
+            viewModel = new ManCategoriaViewModel(categoria);
             this.DataContext = viewModel;
         }
     }

@@ -24,7 +24,7 @@
             </StackPanel>
 
             <StackPanel>
-                <DataGrid AutoGenerateColumns="False" 
+                <!--<DataGrid AutoGenerateColumns="False" 
                           SelectedItem="{Binding DetalleCategoria}"
                           ItemsSource="{Binding Categorias}">
                     <DataGrid.Columns>
@@ -32,7 +32,13 @@
                         <DataGridTextColumn Header="Name" Binding="{Binding NombreCategoria}" />
                         <DataGridTextColumn Header="Name" Binding="{Binding Descripcion}" />
                     </DataGrid.Columns>
-                </DataGrid>
+                </DataGrid>-->
+                <DataGrid Height="363" x:Name="dgvCategoria" AutoGenerateColumns="True"
+                          GridLinesVisibility="Vertical" HeadersVisibility="All" ItemsSource="{Binding Categorias}"
+                          Background="LightGray" RowBackground="LightYellow" AlternatingRowBackground="LightBlue" 
+                          BorderBrush="Gray" BorderThickness="5" SelectedItem="{Binding Path=SelectedCategoria,Mode=TwoWay}"
+                          IsReadOnly="True"
+                          ></DataGrid>
             </StackPanel>
         </StackPanel>
     </Grid>
